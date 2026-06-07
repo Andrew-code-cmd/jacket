@@ -1,0 +1,13 @@
+env/
+.pylintrc
+__pycashe__/
+
+.vscode
+.idea
+.env
+django.log
+security.log
+
+db.sqlite3
+media/
+debug.log
