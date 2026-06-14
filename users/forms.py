@@ -84,7 +84,7 @@ class CustomUserUpdateForm(forms.ModelForm):
     
     class Meta:
         model = User
-        fields = ('fisrt_name', 'last_name', 'email', 'company',
+        fields = ('first_name', 'last_name', 'email', 'company',
                   'address1', 'address2', 'city', 'country', 
                   'province', 'postal_code', 'phone')
         widgets = {
