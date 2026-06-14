@@ -1,9 +1,11 @@
-from django import forms    
+from django import forms
 from .models import CartItem
+
 
 class AddToCartForm(forms.Form):
     size_id = forms.IntegerField(required=False)
     quantity = forms.IntegerField(min_value=1, initial=1)
+
 
     def __init__(self, *args, product=None, **kwargs):
         super().__init__(*args, **kwargs)
@@ -17,15 +19,18 @@ class AddToCartForm(forms.Form):
                              required=True,
                              initial=sizes.first().id
                 )
+    
 
 class UpdateCartItemForm(forms.ModelForm):
     class Meta:
         model = CartItem
         fields = ['quantity']
 
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         if self.instance and self.instance.product_size:
-            self.field_order['quantity'].validators.append(
+            self.fields['quantity'].validators.append(
                 forms.validators.MaxValueValidator(self.instance.product_size.stock)
             )
+

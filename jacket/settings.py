@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'main',
-    'cart'
+    'cart',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -151,3 +152,4 @@ STRIPE_WEBHOOK_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET')
 HELEKET_API_KEY = os.getenv('HELEKET_API_KEY')
 HELEKET_SECRET_KEY = os.getenv('HELEKET_SECRET_KEY')
 
+AUTH_USER_MODEL = 'users.CustomUser'

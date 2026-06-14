@@ -46,8 +46,6 @@ class CatalogView(TemplateView):
             current_category = get_object_or_404(Category, slug=category_slug)
             products = products.filter(category=current_category)
 
-        # проверяем что в запросе есть "q". Это параметр name из тега input(search_input.html). Если он есть -
-        # то фильтруем через Q. Ну и параметры icontains понятно собсно что из себя представляют 
         query = self.request.GET.get('q')
         if query:
             products = products.filter(
@@ -117,4 +115,4 @@ class ProductDetailView(DetailView):
         context = self.get_context_data(**kwargs)
         if request.headers.get('HX-Request'):
             return TemplateResponse(request, 'main/product_detail.html', context)
-        raise TemplateResponse(request, self.template_name, context)
+        return TemplateResponse(request, self.template_name, context)
